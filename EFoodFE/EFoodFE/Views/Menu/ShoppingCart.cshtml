@@ -50,7 +50,7 @@
             <ul>
                 <li><a href='@Url.Action("ShoppingCart", "Menu") '><i class="fa fa-shopping-bag"></i> </a></li>
             </ul>
-            <div class="header__cart__price">Total: <span id="totalMenuSecundario"></span></div>
+            <div class="header__cart__price">SubTotal: <span id="totalMenuSecundario"></span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -109,7 +109,7 @@
                             </li>
                             @*<li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>*@
                         </ul>
-                        <div class="header__cart__price">Total: <span id="totalCarro"></span></div>
+                        <div class="header__cart__price">SubTotal: <span id="totalCarro"></span></div>
                     </div>
                 </div>
             </div>
@@ -167,6 +167,10 @@
         <div class="products">
 
         </div>
+        <div class="basketTotalContainer">
+            <a href='@Url.Action("CheckOut", "Menu") ' style="background-color: black;" class="primary-btn">PAGAR</a>
+        </div>
+
 
     </div>
     <!-- Shoping Cart Section End -->

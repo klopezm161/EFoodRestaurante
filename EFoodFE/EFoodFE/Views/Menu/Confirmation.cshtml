@@ -1,10 +1,10 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
+
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/css/elegant-icons.css" rel="stylesheet" />
     <link href="~/css/nice-select.css" rel="stylesheet" />
@@ -26,6 +27,12 @@
     <link href="~/css/owl.carousel.min.css" rel="stylesheet" />
     <link href="~/css/slicknav.min.css" rel="stylesheet" />
     <link href="~/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/451709ffa5.js" crossorigin="anonymous"></script>
+    <link href="~/css/normaliza.css" rel="stylesheet" />
+    <link href="~/css/style2.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
@@ -34,7 +41,6 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
@@ -44,7 +50,7 @@
             <ul>
                 <li><a href='@Url.Action("ShoppingCart", "Menu") '><i class="fa fa-shopping-bag"></i> </a></li>
             </ul>
-            <div class="header__cart__price">Total: <span id="totalMenuSecundario"></span></div>
+            <div class="header__cart__price">SubTotal: <span id="totalMenuSecundario"></span></div>
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -80,7 +86,6 @@
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -104,7 +109,7 @@
                             </li>
                             @*<li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>*@
                         </ul>
-                        <div class="header__cart__price">Total: <span id="totalCarro"></span></div>
+                        <div class="header__cart__price">SubTotal: <span id="totalCarro"></span></div>
                     </div>
                 </div>
             </div>
@@ -114,57 +119,44 @@
         </div>
     </header>
     <!-- Header Section End -->
-    <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="center col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    <div class="hero__categories">
-                                        Categorias
-                                    </div>
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="">
-                                <button type="submit" style="background-color: black;" class="site-btn">BUSCAR</button>
-                            </form>
-                        </div>
+    <!-- index section  -->
+
+    <div class="contenido-principal contenedor">
+
+        <main class="inicio">
+            <form>
+                <div class="form-row align-items-center">
+                    <div class="col-auto">
+                        <label for="buscar">Buscar</label>
+                    </div>
+                    <div class="col-3">
+                        <select id="combo" class="form-control"> </select>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="productoSeleccionado" />
+                        <a id="buscar"><i class="fas fa-check-square"></i></a>
+
                     </div>
                 </div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h3 style="color: black;"><b>CONFIRMACIÓN DE PEDIDO</b></h3>
-                        <div style="color: black;" class="breadcrumb__option">
-                            <a style="color: black;" href="./index.html">Inicio</a>
-                            <span style="color: black;">Confirmación</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
-    <section class="breadcrumb-section set-bg">
+            </form>
+        </main>
+    </div>
+    <section class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <div style="color: black;" class="breadcrumb__option">
-                            <h3>A continuación, te mostramos el detalle de tu compra:</h3>
+                            <br />
+                            <h3 style="color: black;"><b>CONFIRMACIÓN DE PEDIDO</b></h3>
                             <br>
+                            <div class="row">
+                                <h4 id="nombreCliente" style="color:blue"></h4> <span>
+                                    A continuación el detalle de la información de envio y forma de pago
+                                </span>
+                            </div>
+                            <h4> A continuación el detalle de la información de envio y forma de pago </h4>
+                            <br />
                             <h4><b>INFORMACIÓN DE ENVÍO</b></h4>
                             <br><br>
                             <div class="row">
@@ -172,7 +164,7 @@
                                     <h4>Dirección:</h4>
                                 </div>
                                 <div class="col-md-6 text-center">
-                                    <h4>Calle de la Alersa, Santa Teresa, Escazú</h4>
+                                    <h4 id="direccion">Calle de la Alersa, Santa Teresa, Escazú</h4>
                                 </div>
                             </div>
                             <div class="row">
@@ -180,7 +172,7 @@
                                     <h4>Teléfono:</h4>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <h4>+506 7890 4567</h4>
+                                    <h4 id="telefono">+506 7890 4567</h4>
                                 </div>
                             </div>
                             <br>
@@ -191,7 +183,7 @@
                                     <h4>Medio:</h4>
                                 </div>
                                 <div class="col-md-6 text-center">
-                                    <h4>Tarjeta Crédito/Débito</h4>
+                                    <h4 id="medio"></h4>
                                 </div>
                             </div>
                             <div class="row">
@@ -199,7 +191,7 @@
                                     <h4>Tipo:</h4>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <h4>VISA</h4>
+                                    <h4 id="tipoTarjeta"></h4>
                                 </div>
                             </div>
                             <div class="row">
@@ -207,7 +199,7 @@
                                     <h4>Número de Tarjeta:</h4>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <h4> **** **** **** 7890</h4>
+                                    <h4 id="numTarjeta"> </h4>
                                 </div>
                             </div>
                             <div class="row">
@@ -215,7 +207,7 @@
                                     <h4>Número de Cheque:</h4>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <h4> No Aplica</h4>
+                                    <h4 id="numCheque"> </h4>
                                 </div>
                             </div>
                             <div class="row">
@@ -223,7 +215,7 @@
                                     <h4>Número de Cuenta:</h4>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <h4> No Aplica</h4>
+                                    <h4 id="numCuentaCheque"> </h4>
                                 </div>
                             </div>
                             <br>
@@ -232,7 +224,7 @@
                                     <h4>Total Facturado:</h4>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <h4> ₡15855.00</h4>
+                                    <h4 id="totalFactura"></h4>
                                 </div>
                             </div>
                             <br>
@@ -255,60 +247,60 @@
             </div>
         </div>
     </section>
+    <section class="hero">
+        <!-- Hero Section End -->
+        <!-- Footer Section Begin -->
+        <footer class="footer spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer__about">
+                            <div class="footer__about__logo">
+                                <a href='@Url.Action("Index", "Home") '><img src="~/img/logo.png" alt=""></a>
+                            </div>
+                            <ul>
 
-    <!-- Footer Section Begin -->
-    <footer class="footer spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href='@Url.Action("Index", "Home") '><img src="~/img/logo.png" alt=""></a>
+                                <li>Phone: +506 2225 6786</li>
+                                <li>Email: service@e-food.com</li>
+                            </ul>
                         </div>
-                        <ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
 
-                            <li>Phone: +506 2225 6786</li>
-                            <li>Email: service@e-food.com</li>
-                        </ul>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer__copyright">
+                            <div class="footer__copyright__text">
+                                <p>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+                            </div>
+                            <div class="footer__copyright__payment"><img src="~/img/payment-item.png" alt=""></div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-
-                </div>
-
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text">
-                            <p>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;
-                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </p>
-                        </div>
-                        <div class="footer__copyright__payment"><img src="~/img/payment-item.png" alt=""></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer SectionEnd -->
+        </footer>
+    </section>
+    @Html.Hidden("RedirectTo", Url.Action("ResultadoBusqueda", "Menu"))
+    <!-- Footer Section End -->
     <!-- Js Plugins -->
-    <script src="~/js/jquery-3.3.1.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery.nice-select.min.js"></script>
+
     <script src="~/js/jquery-ui.min.js"></script>
     <script src="~/js/jquery.slicknav.js"></script>
     <script src="~/js/mixitup.min.js"></script>
     <script src="~/js/owl.carousel.min.js"></script>
     <script src="~/js/main.js"></script>
+    <script src="~/js/BuscarProducto.js"></script>
     <script src="~/js/CarritoTotalOtrasClases.js"></script>
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-
-
-
+    <script src="~/js/ConfirmacionPago.js"></script>
 </body>
 
 </html>

@@ -232,6 +232,8 @@
     <Content Include="js\BuscarProducto.js" />
     <Content Include="js\carrito.js" />
     <Content Include="js\CarritoTotalOtrasClases.js" />
+    <Content Include="js\cliente.js" />
+    <Content Include="js\ConfirmacionPago.js" />
     <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="js\jquery-ui.min.js" />
     <Content Include="js\jquery.nice-select.min.js" />
@@ -240,6 +242,8 @@
     <Content Include="js\mixitup.min.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\PrecioProducto.js" />
+    <Content Include="js\SeleccionarTarjetaCheque.js" />
+    <Content Include="js\SelecionarPago.js" />
     <Content Include="js\VerProducto.js" />
     <Content Include="js\VerProductoDetalle.js" />
     <Content Include="Scripts\bootstrap.js" />
