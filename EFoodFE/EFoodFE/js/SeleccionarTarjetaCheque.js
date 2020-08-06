@@ -3,8 +3,9 @@
   
     //var ligadas;
     let chequeArray = [];
-    //var tarjetas = [];
-const uriCheque = "https://localhost:44335/api/Cheque/1";
+    let tarjetaPago = [];
+    const uriCheque = "https://localhost:44335/api/Cheque/1";
+    const uriTarjeta = "https://localhost:44335/api/Tarjeta/1";
 
 function cheque() {
     event.preventDefault();
@@ -70,7 +71,101 @@ function cheque() {
             .catch(err => console.log('error', err));
       //  $('#formulario').trigger("reset");
     }
-}
+    }
+
+    function tarjeta() {
+        event.preventDefault();
+        console.log("dentro de agregar tarjeta")
+        var verificar = true;
+        let numTarjetaV = document.getElementById('numeroTarjeta');
+        let mesV = document.getElementById('mes');
+        let anioV = document.getElementById('anio');
+        let cvvV = document.getElementById('cvv');
+        let tipoV = document.getElementById('tarjetasAsignadas');
+        let creditoDebitoV = document.getElementById('creditoDebito');
+        let cartCost;
+        let totalSiHayDescuento = localStorage.getItem('totalCostConDescuento');
+        let totalSiNoHayDescuento = localStorage.getItem('totalCost');
+        if (!numTarjetaV.value) {
+            console.log('Espacio de chequeV requerido');
+            numTarjetaV.focus();
+            verificar = false;
+        }
+        else if (!mesV.value) {
+            console.log('Espacio de cuentaV requerido');
+            mesV.focus();
+            verificar = false;
+        } if (!anioV.value) {
+            console.log('Espacio de chequeV requerido');
+            anioV.focus();
+            verificar = false;
+        }
+        else if (!cvvV.value) {
+            console.log('Espacio de cuentaV requerido');
+            cvvV.focus();
+            verificar = false;
+        }
+        if (totalSiHayDescuento) {
+            cartCost = totalSiHayDescuento;
+
+        } else {
+            cartCost = totalSiNoHayDescuento;
+        }
+
+        console.log("Imprimiendo variables previos a enviar a cheque");
+        console.log(numTarjetaV.value);
+        console.log(mesV.value);
+        console.log(anioV.value);
+        console.log(cvvV.value);
+        console.log(tipoV.value);
+        console.log(creditoDebitoV.value);
+        console.log(cartCost);
+
+        if (verificar) {
+            const item = {
+                numTarjeta: numTarjetaV.value,
+                mes: mesV.value,
+                anio: anioV.value,
+                cvv: cvvV.value,
+                tipoTarjeta: tipoV.value,
+                creditoDebito: creditoDebitoV.value,
+                monto: cartCost      
+
+
+            };
+
+            fetch(uriTarjeta, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(item)
+            }).then(response => response.text())
+                .then(text => {
+                    alert(text);
+                    if (text == '"Tarjeta aceptada"') {
+                        console.log("si aceptó el cheque");
+                        tarjetaPago = [
+                            {
+                                numTarjeta: numTarjetaV.value,
+                                mes: mesV.value,
+                                anio: anioV.value,
+                                cvv: cvvV.value,
+                                tipoTarjeta: tipoV.value,
+                                creditoDebito: creditoDebitoV.value,
+
+                            }]
+                        localStorage.setItem('infoTarjeta', JSON.stringify(tarjetaPago));
+                        var url = $("#RedirectToConfirmation").val();
+                        location.href = url;
+                    }
+                })
+                .catch(err => console.log('error', err));
+            //  $('#formulario').trigger("reset");
+        }
+    }
+
 
 async function list(Get = "") {
     try {
@@ -126,6 +221,8 @@ var init = () => {
     list(URLGet).catch((e) => console.error(e));
     var btnCheque = document.getElementById('cheque');
     btnCheque.onclick = cheque;
+    var btnCheque = document.getElementById('tarjeta');
+    btnCheque.onclick = tarjeta;
 }
 init();
 

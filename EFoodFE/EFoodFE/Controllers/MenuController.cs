@@ -41,8 +41,11 @@ namespace EFoodFE.Controllers
         {
             return View();
         }
-               
-     
+
+        public ActionResult NuevaFormaPago()
+        {
+            return View();
+        }
 
     }
 }

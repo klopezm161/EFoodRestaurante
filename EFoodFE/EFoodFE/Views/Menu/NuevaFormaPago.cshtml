@@ -141,40 +141,91 @@
             </form>
         </main>
     </div>
+    <br />
+    <br />
+    <section>
+        <div class="container">
+            <h3 style="color: black;"><b>INGRESE LOS DATOS DE LA NUEVA FORMA DE PAGO</b></h3>
+            <br />
+            <div class="row">
+                <div class="col-lg-6 ">
+                    <form class="credit-card-div ">
+                        <h3>¿Quiere agregar una Tarjeta de Crédito?</h3>
+                        <br>
+                        <div class="form-group col-lg-12">
+                            <label for="exampleInputEmail1">Tarjetas disponibles</label>
+                            <ul>
+
+                                <select class="md-form" id="tarjetasAsignadas">
+                                </select>
+
+                            </ul>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="form-group col-lg-12">
+                            <label for="exampleInputEmail1">Número de tarjeta</label>
+                            <input type="number" class="form-control" id="numeroTarjeta">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-3 ">
+                                <label for="exampleInputPassword1">Mes</label>
+                                <input type="number" class="form-control" min="1" max="12" id="mes" placeholder="MM">
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label for="exampleInputPassword1">Año</label>
+                                <input type="number" class="form-control" id="anio" min="2010" placeholder="AAAA">
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label for="exampleInputPassword1">CVV</label>
+                                <input type="password" class="form-control" id="cvv" placeholder="CVV">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="exampleInputEmail1">Tipo de tarjeta</label>                          
+
+                            <select class="md-form" id="creditoDebito">
+                                <option value="debito">Debito</option>
+                                <option value="credito">Credito</option>
+                            </select>
+
+                            
+                        </div>
+
+                        <button id="agregarTarjeta" type="submit" onclick="location.href='./confirmation.html'" style="background-color: green; border-color: green;" class="col-lg-12 btn btn-primary">AGREGAR TARJETA</button>
+                    </form>
+
+                </div>
+                <div class="col-lg-6 ">
+                    <form class="credit-card-div ">
+                        <h3>¿Quiere agregar un cheque electrónico?</h3>
+                        <div class="form-group col-lg-12">
+                            <br>
+                            <label for="exampleInputEmail1">Número de cheque</label>
+                            <input type="text" class="form-control" id="numCheque">
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="exampleInputPassword1">Cuenta</label>
+                            <input type="text" class="form-control" id="numCuenta" placeholder="">
+                        </div>
+                        <br>
+                        <button id="cheque" type="submit" style="background-color: green; border-color: green;" class="col-lg-12 btn btn-primary">AGREAR CHEQUE ELECTRONICO</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
-            <h3 style="color: black;"><b>SELECCIONAR FORMA DE PAGO</b></h3>
-            <div class="">
-                <div class="">
-                    <select class="md-form justify-content-center" id="medioPago">
-                    </select>
 
 
-                    <br><br><br>
-                </div>
-            </div>
-            <div class="">
-                <div class="">
-                    <div class="checkout__order__total"><b>SubTotal:</b> <span id="totalCon"> </span></div>
-                    <br />
-                </div>
-                <div class="">
-                    <div class="checkout__order__total"><b>Descuento:</b> <span id="totalDescuento"> </span></div>
-                </div>
-                <br>
 
-                <div class="">
-                    <div class="checkout__order__total"><b>Total:</b> <span id="totalConDescuento"> </span></div>
-                </div>
-            </div>
-
-            <br>
-            <a href="" id="formaPagar" style="background-color: black;" class="primary-btn">ELEGIR FORMA DE PAGO</a>
-            <a href='@Url.Action("NuevaFormaPago", "Menu") ' style="background-color: green; " class="primary-btn">AGREGAR CUENTA NUEVA</a>
+            <a href='@Url.Action("Payment", "Menu") ' style="background-color: black;" class="primary-btn">SELECCIONE MEDIO DE PAGO</a>
 
         </div>
     </section>
-
     <section class="hero">
 
         <!-- Hero Section End -->
@@ -219,7 +270,6 @@
     </section>
     @Html.Hidden("RedirectTo", Url.Action("ResultadoBusqueda", "Menu"))
     @Html.Hidden("RedirectToConfirmation", Url.Action("Confirmation", "Menu"))
-    @Html.Hidden("RedirectToCreditCard", Url.Action("CreditCard", "Menu"))
     <!-- Footer Section End -->
     <!-- Js Plugins -->
 
@@ -231,7 +281,8 @@
     <script src="~/js/BuscarProducto.js"></script>
     <script src="~/js/CarritoTotalOtrasClases.js"></script>
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-    <script src="~/js/SelecionarPago.js"></script>
+    <script src="~/js/AgregarFormaPago.js"></script>
+
 </body>
 
 </html>

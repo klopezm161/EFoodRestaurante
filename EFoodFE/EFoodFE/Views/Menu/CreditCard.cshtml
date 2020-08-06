@@ -170,19 +170,30 @@
                         <div class="row">
                             <div class="form-group col-lg-3 ">
                                 <label for="exampleInputPassword1">Mes</label>
-                                <input type="number" class="form-control" id="mes" placeholder="MM">
+                                <input type="number" class="form-control" min="1" max="12" id="mes" placeholder="MM">
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="exampleInputPassword1">Año</label>
-                                <input type="number" class="form-control" id="anio" placeholder="AAAA">
+                                <input type="number" class="form-control" id="anio" min="2010" placeholder="AAAA">
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="exampleInputPassword1">CVV</label>
                                 <input type="password" class="form-control" id="cvv" placeholder="CVV">
                             </div>
                         </div>
+                        <div class="form-group col-lg-12">
+                            <label for="exampleInputEmail1">Tipo de tarjeta</label>
 
-                        <button type="submit" onclick="location.href='./confirmation.html'" style="background-color: green; border-color: green;" class="col-lg-12 btn btn-primary">PAGAR CON TARJETA</button>
+                            <select class="md-form" id="creditoDebito">
+                                <option value="debito">Debito</option>
+                                <option value="credito">Credito</option>
+                            </select>
+
+
+                        </div>
+
+
+                        <button id="tarjeta" type="submit" onclick="location.href='./confirmation.html'" style="background-color: green; border-color: green;" class="col-lg-12 btn btn-primary">PAGAR CON TARJETA</button>
                     </form>
 
                 </div>
