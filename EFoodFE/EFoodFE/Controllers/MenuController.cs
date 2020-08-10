@@ -46,6 +46,10 @@ namespace EFoodFE.Controllers
         {
             return View();
         }
+        public ActionResult FacebookLogin()
+        {
+            return View();
+        }
 
     }
 }
