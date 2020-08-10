@@ -193,7 +193,11 @@
                                         <label for="acc-or">
                                             Iniciar Sesión
                                             <br>
-                                            <a href="https://www.facebook.com" class=""><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+                                            <fb:login-button scope="public_profile,email" data-auto-logout-link="true" onlogin="checkLoginState();">
+                                            </fb:login-button>
+
+                                            <div id="status">
+                                            </div>
                                             <a href="https://www.twitter.com" class=""><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
                                         </label>
                                     </div>
@@ -264,6 +268,9 @@
     <script src="~/js/CarritoTotalOtrasClases.js"></script>
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="~/js/cliente.js"></script>
+    <script src="~/js/Facebook.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
 </body>
 
 </html>
