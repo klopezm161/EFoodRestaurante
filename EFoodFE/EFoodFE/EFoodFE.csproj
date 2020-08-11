@@ -240,6 +240,7 @@
     <Content Include="js\PrecioProducto.js" />
     <Content Include="js\SeleccionarTarjetaCheque.js" />
     <Content Include="js\SelecionarPago.js" />
+    <Content Include="js\VerFactura.js" />
     <Content Include="js\VerProducto.js" />
     <Content Include="js\VerProductoDetalle.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -312,6 +313,7 @@
     <Content Include="Views\Menu\ResultadoBusqueda.cshtml" />
     <Content Include="Views\Menu\NuevaFormaPago.cshtml" />
     <Content Include="Views\Menu\FacebookLogin.cshtml" />
+    <Content Include="Views\Menu\VerFactura.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
