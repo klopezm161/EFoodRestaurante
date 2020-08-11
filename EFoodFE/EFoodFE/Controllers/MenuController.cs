@@ -41,8 +41,13 @@ namespace EFoodFE.Controllers
         {
             return View();
         }
-               
-     
+
+        public ActionResult VerFactura()
+        {
+            return View();
+        }
+
+
 
     }
 }

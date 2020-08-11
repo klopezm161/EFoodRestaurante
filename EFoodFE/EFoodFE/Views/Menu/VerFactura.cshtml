@@ -1,8 +1,7 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +31,7 @@
     <link href="~/css/normaliza.css" rel="stylesheet" />
     <link href="~/css/style2.css" rel="stylesheet" />
 
-
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
@@ -141,119 +140,86 @@
             </form>
         </main>
     </div>
+
+
     <section class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <div style="color: black;" class="breadcrumb__option" id="botones">
-                            <br />
-                            <h3 style="color: black;"><b>CONFIRMACIÓN DE PEDIDO</b></h3>
-                            <br>
-                            <div class="row">
-                                <h4 id="nombreCliente" style="color:blue"></h4> <span>
-                                    A continuación el detalle de la información de envio y forma de pago
-                                </span>
-                            </div>
-                            <h4> A continuación el detalle de la información de envio y forma de pago </h4>
-                            <br />
-                            <h4><b>INFORMACIÓN DE ENVÍO</b></h4>
-                            <br><br>
-                            <div class="row">
-                                <div class="col-md-6 text-center">
-                                    <h4>Dirección:</h4>
-                                </div>
-                                <div class="col-md-6 text-center">
-                                    <h4 id="direccion">Calle de la Alersa, Santa Teresa, Escazú</h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 ">
-                                    <h4>Teléfono:</h4>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <h4 id="telefono">+506 7890 4567</h4>
-                                </div>
-                            </div>
-                            <br>
-                            <h4><b>INFORMACIÓN DE PAGO</b></h4>
-                            <br><br>
-                            <div class="row">
-                                <div class="col-md-6 text-center">
-                                    <h4>Medio:</h4>
-                                </div>
-                                <div class="col-md-6 text-center">
-                                    <h4 id="medio"></h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 ">
-                                    <h4>Tipo:</h4>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <h4 id="tipoTarjeta"></h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 ">
-                                    <h4>Número de Tarjeta:</h4>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <h4 id="numTarjeta"> </h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 ">
-                                    <h4>Número de Cheque:</h4>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <h4 id="numCheque"> </h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 ">
-                                    <h4>Número de Cuenta:</h4>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <h4 id="numCuentaCheque"> </h4>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6 ">
-                                    <h4>Total Facturado:</h4>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <h4 id="totalFactura"></h4>
-                                </div>
-                            </div>
-                            <br>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6 ">
-                                    <a style="background-color: green;" class="primary-btn" id="facturar" name="facturar">GENERAR PEDIDO</a>
-
-                                </div>
-
-                                <div class="col-md-6">
-                                    <a href='@Url.Action("Index", "Home")' style="background-color: red;" class="primary-btn">CANCELAR PEDIDO</a>
-                                </div>
-                            </div>
-                        </div>
                         <div style="color: black;" class="breadcrumb__option">
+                            <br />
+                            <h3 style="color: black;"><b>FACTURA DE TU PEDIDO</b></h3>
                             <br>
+
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6 text-center">
+                                    <h4>Cod Pedido: </h4>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <h4 id="cod"></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 text-center">
+                                    <h4>Fecha: </h4>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <h4 id="fecha"></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 ">
+                                    <h4>Nombre del cliente:</h4>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <h4 id="nombre_cliente"></h4>
+                                </div>
+                            </div>
+                            <br>
+                            <h4><b>Productos facturados</b></h4>
+                            <br><br>
+                            <div class="row">
+
+                                <div class="">
+                                    <h2>Resultado de busqueda</h2>
+                                    <table class="tableBodyScroll">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>Producto</th>
+                                                <th>Precio</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="contenido">
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6 ">
+                                    <h4>Total:</h4>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <h4 id="total_factura"></h4>
+                                </div>
+                            </div>
+
                             <br>
                             <br>
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <h4 id="pregunta"></h4>
-                                </div>
-                                <div class="col-md-6 " id="contenido">
+                                    <a href='@Url.Action("Index", "Home") ' style="background-color: green;" class="primary-btn">Inicio</a>
 
                                 </div>
+
                             </div>
+
+
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -299,12 +265,11 @@
             </div>
         </footer>
     </section>
-    @Html.Hidden("RedirectToFactura", Url.Action("VerFactura", "Menu"))
     @Html.Hidden("RedirectTo", Url.Action("ResultadoBusqueda", "Menu"))
 
     <!-- Footer Section End -->
     <!-- Js Plugins -->
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
     <script src="~/js/jquery-ui.min.js"></script>
     <script src="~/js/jquery.slicknav.js"></script>
     <script src="~/js/mixitup.min.js"></script>
@@ -313,7 +278,8 @@
     <script src="~/js/BuscarProducto.js"></script>
     <script src="~/js/CarritoTotalOtrasClases.js"></script>
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-    <script src="~/js/ConfirmacionPago.js"></script>
+    <script src="~/js/VerFactura.js"></script>
 </body>
 
 </html>
+

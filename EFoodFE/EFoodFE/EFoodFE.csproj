@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -109,11 +112,6 @@
     <Reference Include="Antlr3.Runtime">
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +242,7 @@
     <Content Include="js\PrecioProducto.js" />
     <Content Include="js\SeleccionarTarjetaCheque.js" />
     <Content Include="js\SelecionarPago.js" />
+    <Content Include="js\VerFactura.js" />
     <Content Include="js\VerProducto.js" />
     <Content Include="js\VerProductoDetalle.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -314,6 +313,7 @@
     <Content Include="Views\Menu\ShopDetails.cshtml" />
     <Content Include="Views\Menu\ShoppingCart.cshtml" />
     <Content Include="Views\Menu\ResultadoBusqueda.cshtml" />
+    <Content Include="Views\Menu\VerFactura.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
