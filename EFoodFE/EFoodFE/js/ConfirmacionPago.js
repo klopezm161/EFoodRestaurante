@@ -2,6 +2,7 @@
 (function () {
     'use strict';
     let itemsParaFactura = [];
+    let final;
     function obtenerInformacionDeConfirmacion()
     {
         let userInfo = localStorage.getItem('usuario');
@@ -65,8 +66,13 @@
         {
             totalFinal.textContent = totalSiNoHayDescuento;
         }
+
+        final = totalFinal;
        
     }
+
+  
+
     function previoAFacturar()
     {
         let itemsInCart = localStorage.getItem('productsInCart');
@@ -75,17 +81,109 @@
         console.log(itemsInCart.length);
         for (let valor of itemsInCart)
         {
+
             itemsParaFactura.push(valor);
         }
         console.log("Imprimiendo el array");
         console.log(itemsParaFactura)
+        console.log(parseFloat(final.textContent));
+
     }
+
+    function agregarProd() {
+//Agregar productos del carrito a la factura
+        for (let x in itemsParaFactura) {
+            let name = itemsParaFactura[x].name;
+            let price = itemsParaFactura[x].price
+
+            const uri2 = "https://localhost:44308/api/DetalleProd";
+            const item = {
+                codigo_producto: name,
+                precio: price
+
+            };
+
+            fetch(uri2, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(item)
+            }).then(response => response.text())
+                .then(text => {
+                    alert(text)
+                    console.log(text);
+                })
+                .catch(err => console.log('error', err));
+
+        }
+
+    }
+
+function agregarItems() {
+        //facturar
+
+    let estado1 = "En Proceso";
+    let monto = parseFloat(final.textContent);
+
+        const uri1 = "https://localhost:44308/api/Detalle";
+        const item = {
+            monto: monto,
+            estado: estado1
+
+        };
+
+        fetch(uri1, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        }).then(response => response.text())
+            .then(text => {
+                alert(text)
+                console.log(text);
+            })
+        .catch(err => console.log('error', err));
+
+
+
+    console.log("Inicia agregarProd");
+    setTimeout(function () {
+        console.log("Iniciado");
+        agregarProd();
+    }, 4000);
+
+
+
+    localStorage.clear('productsInCart');
+    localStorage.clear('totalCost');
+    localStorage.clear('cartNumbers');
+    localStorage.clear('eleccionTipoPago');
+    localStorage.clear('totalCostConDescuento');
+
+    var contenido = document.querySelector('#contenido');
+    var botones = document.getElementById('botones');
+    var pregunta = document.querySelector('#pregunta');
+    while (botones.firstChild) {
+        botones.removeChild(botones.firstChild)
+    }
+    pregunta.innerHTML = "¿Quieres ver tu factura?";
+    contenido.innerHTML = `<a style="background-color: red;" class="primary-btn" href='/Menu/VerFactura'>Ver Factura</a>` 
+
+    };
 
     var init = () => {
        obtenerInformacionDeConfirmacion();
         previoAFacturar();
+
+        document.getElementById("facturar").addEventListener("click", agregarItems );
+        
     }
 
     init();
 
 })()
+
