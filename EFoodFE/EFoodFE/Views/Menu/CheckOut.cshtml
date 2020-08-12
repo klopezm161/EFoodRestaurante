@@ -55,11 +55,13 @@
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
 
-                <div>Español</div>
+                <div>LANG</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
-                    <li><a href="#">Español</a></li>
-                    <li><a href="#">English</a></li>
+                    <li><a class="translate" id="es">Español</a></li>
+                    <li><a class="translate" id="en">English</a></li>
+                    <li><a class="translate" id="dt">Deutsche</a></li>
+                    <li><a class="translate" id="it">Italiano</a></li>
                 </ul>
             </div>
         </div>
@@ -79,11 +81,13 @@
                         <div class="header__top__right">
 
                             <div class="header__top__right__language">
-                                <div style="color: white;">Español</div>
+                                <div style="color: white;">LANG</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Español</a></li>
-                                    <li><a href="#">English</a></li>
+                                    <li><a class="translate" id="es">Español</a></li>
+                                    <li><a class="translate" id="en">English</a></li>
+                                    <li><a class="translate" id="dt">Deutsche</a></li>
+                                    <li><a class="translate" id="it">Italiano</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -109,7 +113,7 @@
                             </li>
                             @*<li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>*@
                         </ul>
-                        <div class="header__cart__price">SubTotal: <span id="totalCarro"></span></div>
+                        <div class="header__cart__price">₡ <span id="totalCarro"></span></div>
                     </div>
                 </div>
             </div>
@@ -127,7 +131,7 @@
             <form>
                 <div class="form-row align-items-center">
                     <div class="col-auto">
-                        <label for="buscar">Buscar</label>
+                        <label for="buscar" class="lang" key="buscar">Buscar</label>
                     </div>
                     <div class="col-3">
                         <select id="combo" class="form-control"> </select>
@@ -151,13 +155,13 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Nombre<span>*</span></p>
+                                        <p class="lang" key="nombre">Nombre<span>*</span></p>
                                         <input type="text" id="nombre">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Apellidos<span>*</span></p>
+                                        <p class="lang" key="apellidos">Apellidos<span>*</span></p>
                                         <input type="text" id="apellidos">
                                     </div>
                                 </div>
@@ -166,20 +170,20 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Dirección de Entrega<span>*</span></p>
-                                        <input type="text" placeholder="Dirección Exacta" class="checkout__input__add" id="direccion">
+                                        <p class="lang" key="direccion">Dirección de Entrega<span>*</span></p>
+                                        <input type="text" placeholder="" class="checkout__input__add" id="direccion">
 
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Telefono<span>*</span></p>
+                                        <p class="lang" key="tel1">Telefono<span>*</span></p>
                                         <input type="text" id="telefono">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Cupón de Descuento<span></span></p>
+                                        <p class="lang" key="cupon">Cupón de Descuento<span></span></p>
                                         <input type="text" id="descuento">
                                     </div>
                                 </div>
@@ -191,7 +195,7 @@
                                 <div class="checkout__order">
                                     <div class="checkout__input__checkbox">
                                         <label for="acc-or">
-                                            Iniciar Sesión
+                                            <b class="lang" key="iniciarSesion"> Iniciar Sesión</b>
                                             <br>
                                             <fb:login-button scope="public_profile,email" data-auto-logout-link="true" onlogin="checkLoginState();">
                                             </fb:login-button>
@@ -202,7 +206,7 @@
                                         </label>
                                     </div>
 
-                                    <a href="" id="formaPago" style="background-color: black;" class="primary-btn">SIGUIENTE</a>
+                                    <a href="" id="formaPago" style="background-color: black;" class="primary-btn lang" key="siguiente">SIGUIENTE</a>
                                 </div>
 
                             </div>
@@ -226,8 +230,8 @@
                             </div>
                             <ul>
 
-                                <li>Phone: +506 2225 6786</li>
-                                <li>Email: service@e-food.com</li>
+                                <li class="lang" key="tel">Telefono: +506 2225 6786</li>
+                                <li class="lang" key="email">Email: service@e-food.com</li>
                             </ul>
                         </div>
                     </div>
@@ -270,6 +274,7 @@
     <script src="~/js/cliente.js"></script>
     <script src="~/js/Facebook.js"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script src="~/js/scriptIdioma.js"></script>
 
 </body>
 

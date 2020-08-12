@@ -55,11 +55,13 @@
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
 
-                <div>Español</div>
+                <div>LANG</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
-                    <li><a href="#">Español</a></li>
-                    <li><a href="#">English</a></li>
+                    <li><a class="translate" id="es">Español</a></li>
+                    <li><a class="translate" id="en">English</a></li>
+                    <li><a class="translate" id="dt">Deutsche</a></li>
+                    <li><a class="translate" id="it">Italiano</a></li>
                 </ul>
             </div>
         </div>
@@ -79,11 +81,13 @@
                         <div class="header__top__right">
 
                             <div class="header__top__right__language">
-                                <div style="color: white;">Español</div>
+                                <div style="color: white;">LANG</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Español</a></li>
-                                    <li><a href="#">English</a></li>
+                                    <li><a class="translate" id="es">Español</a></li>
+                                    <li><a class="translate" id="en">English</a></li>
+                                    <li><a class="translate" id="dt">Deutsche</a></li>
+                                    <li><a class="translate" id="it">Italiano</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -109,7 +113,7 @@
                             </li>
                             @*<li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>*@
                         </ul>
-                        <div class="header__cart__price">SubTotal: <span id="totalCarro"></span></div>
+                        <div class="header__cart__price">₡ <span id="totalCarro"></span></div>
                     </div>
                 </div>
             </div>
@@ -127,7 +131,7 @@
             <form>
                 <div class="form-row align-items-center">
                     <div class="col-auto">
-                        <label for="buscar">Buscar</label>
+                        <label for="buscar" class="lang" key="buscar">Buscar</label>
                     </div>
                     <div class="col-3">
                         <select id="combo" class="form-control"> </select>
@@ -148,39 +152,39 @@
                     <div class="breadcrumb__text">
                         <div style="color: black;" class="breadcrumb__option" id="botones">
                             <br />
-                            <h3 style="color: black;"><b>CONFIRMACIÓN DE PEDIDO</b></h3>
+                            <h3 style="color: black;" class="lang" key="confirmacion"><b>CONFIRMACIÓN DE PEDIDO</b></h3>
                             <br>
                             <div class="row">
-                                <h4 id="nombreCliente" style="color:blue"></h4> <span>
+                                <h4 id="nombreCliente" style="color:blue"></h4> <span class="lang" key="textConfirmacion">
                                     A continuación el detalle de la información de envio y forma de pago
                                 </span>
                             </div>
-                            <h4> A continuación el detalle de la información de envio y forma de pago </h4>
+                            <h4 class="lang" key="detalleTexto"> A continuación el detalle de la información de envio y forma de pago </h4>
                             <br />
-                            <h4><b>INFORMACIÓN DE ENVÍO</b></h4>
+                            <h4><b class="lang" key="infoEnvio">INFORMACIÓN DE ENVÍO</b></h4>
                             <br><br>
                             <div class="row">
                                 <div class="col-md-6 text-center">
                                     <h4>Dirección:</h4>
                                 </div>
                                 <div class="col-md-6 text-center">
-                                    <h4 id="direccion">Calle de la Alersa, Santa Teresa, Escazú</h4>
+                                    <h4 id="direccion"></h4>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <h4>Teléfono:</h4>
+                                    <h4 class="lang" key="tel">Teléfono:</h4>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <h4 id="telefono">+506 7890 4567</h4>
+                                    <h4 id="telefono"></h4>
                                 </div>
                             </div>
                             <br>
-                            <h4><b>INFORMACIÓN DE PAGO</b></h4>
+                            <h4><b class="lang" key="infoPago">INFORMACIÓN DE PAGO</b></h4>
                             <br><br>
                             <div class="row">
                                 <div class="col-md-6 text-center">
-                                    <h4>Medio:</h4>
+                                    <h4 class="lang" key="medio">Medio:</h4>
                                 </div>
                                 <div class="col-md-6 text-center">
                                     <h4 id="medio"></h4>
@@ -188,7 +192,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <h4>Tipo:</h4>
+                                    <h4 lass="lang" key="tipo">Tipo:</h4>
                                 </div>
                                 <div class="col-md-6 ">
                                     <h4 id="tipoTarjeta"></h4>
@@ -196,7 +200,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <h4>Número de Tarjeta:</h4>
+                                    <h4 class="lang" key="numeroTarjeta">Número de Tarjeta:</h4>
                                 </div>
                                 <div class="col-md-6 ">
                                     <h4 id="numTarjeta"> </h4>
@@ -204,7 +208,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <h4>Número de Cheque:</h4>
+                                    <h4 class="lang" key="numCheque">Número de Cheque:</h4>
                                 </div>
                                 <div class="col-md-6 ">
                                     <h4 id="numCheque"> </h4>
@@ -212,7 +216,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <h4>Número de Cuenta:</h4>
+                                    <h4 class="lang" key="numCuenta">Número de Cuenta:</h4>
                                 </div>
                                 <div class="col-md-6 ">
                                     <h4 id="numCuentaCheque"> </h4>
@@ -221,7 +225,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <h4>Total Facturado:</h4>
+                                    <h4 class="lang" key="totalFacturado">Total Facturado:</h4>
                                 </div>
                                 <div class="col-md-6 ">
                                     <h4 id="totalFactura"></h4>
@@ -231,12 +235,12 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <a style="background-color: green;" class="primary-btn" id="facturar" name="facturar">GENERAR PEDIDO</a>
+                                    <a style="background-color: green;" class="primary-btn lang" key="generar" id="facturar" name="facturar">GENERAR PEDIDO</a>
 
                                 </div>
 
                                 <div class="col-md-6">
-                                    <a href='@Url.Action("Index", "Home")' style="background-color: red;" class="primary-btn">CANCELAR PEDIDO</a>
+                                    <a href='@Url.Action("Index", "Home")' style="background-color: red;" class="primary-btn  lang" key="cancelar">CANCELAR PEDIDO</a>
                                 </div>
                             </div>
                         </div>
@@ -271,8 +275,8 @@
                             </div>
                             <ul>
 
-                                <li>Phone: +506 2225 6786</li>
-                                <li>Email: service@e-food.com</li>
+                                <li class="lang" key="tel">Telefono: +506 2225 6786</li>
+                                <li class="lang" key="email">Email: service@e-food.com</li>
                             </ul>
                         </div>
                     </div>
@@ -314,6 +318,8 @@
     <script src="~/js/CarritoTotalOtrasClases.js"></script>
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="~/js/ConfirmacionPago.js"></script>
+    <script src="~/js/scriptIdioma.js"></script>
+
 </body>
 
 </html>

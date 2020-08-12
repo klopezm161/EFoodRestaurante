@@ -55,11 +55,13 @@
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
 
-                <div>Español</div>
+                <div>LANG</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
-                    <li><a href="#">Español</a></li>
-                    <li><a href="#">English</a></li>
+                    <li><a class="translate" id="es">Español</a></li>
+                    <li><a class="translate" id="en">English</a></li>
+                    <li><a class="translate" id="dt">Deutsche</a></li>
+                    <li><a class="translate" id="it">Italiano</a></li>
                 </ul>
             </div>
         </div>
@@ -79,11 +81,13 @@
                         <div class="header__top__right">
 
                             <div class="header__top__right__language">
-                                <div style="color: white;">Español</div>
+                                <div style="color: white;">LANG</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Español</a></li>
-                                    <li><a href="#">English</a></li>
+                                    <li><a class="translate" id="es">Español</a></li>
+                                    <li><a class="translate" id="en">English</a></li>
+                                    <li><a class="translate" id="dt">Deutsche</a></li>
+                                    <li><a class="translate" id="it">Italiano</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -109,7 +113,7 @@
                             </li>
                             @*<li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>*@
                         </ul>
-                        <div class="header__cart__price">SubTotal: <span id="totalCarro"></span></div>
+                        <div class="header__cart__price">₡ <span id="totalCarro"></span></div>
                     </div>
                 </div>
             </div>
@@ -127,7 +131,7 @@
             <form>
                 <div class="form-row align-items-center">
                     <div class="col-auto">
-                        <label for="buscar">Buscar</label>
+                        <label for="buscar" class="lang" key="buscar">Buscar</label>
                     </div>
                     <div class="col-3">
                         <select id="combo" class="form-control"> </select>
@@ -143,7 +147,7 @@
     </div>
     <section class="checkout spad">
         <div class="container">
-            <h3 style="color: black;"><b>SELECCIONAR FORMA DE PAGO</b></h3>
+            <h3 style="color: black;"><b class="lang" key="seleccionaFormaDePago">SELECCIONAR FORMA DE PAGO</b></h3>
             <div class="">
                 <div class="">
                     <select class="md-form justify-content-center" id="medioPago">
@@ -155,22 +159,22 @@
             </div>
             <div class="">
                 <div class="">
-                    <div class="checkout__order__total"><b>SubTotal:</b> <span id="totalCon"> </span></div>
+                    <div class="checkout__order__total"><b class="lang" key="subtotal:">SubTotal:</b> <span id="totalCon"> </span></div>
                     <br />
                 </div>
                 <div class="">
-                    <div class="checkout__order__total"><b>Descuento:</b> <span id="totalDescuento"> </span></div>
+                    <div class="checkout__order__total"><b class="lang" key="descuento">Descuento:</b> <span id="totalDescuento"> </span></div>
                 </div>
                 <br>
 
                 <div class="">
-                    <div class="checkout__order__total"><b>Total:</b> <span id="totalConDescuento"> </span></div>
+                    <div class="checkout__order__total"><b class="lang" key="total1">Total:</b> <span id="totalConDescuento"> </span></div>
                 </div>
             </div>
 
             <br>
-            <a href="" id="formaPagar" style="background-color: black;" class="primary-btn">ELEGIR FORMA DE PAGO</a>
-            <a href='@Url.Action("NuevaFormaPago", "Menu") ' style="background-color: green; " class="primary-btn">AGREGAR CUENTA NUEVA</a>
+            <a href="" id="formaPagar" style="background-color: black;" class="primary-btn lang" key="elegirFormaDePago">ELEGIR FORMA DE PAGO</a>
+            <a href='@Url.Action("NuevaFormaPago", "Menu") ' style="background-color: green; " class="primary-btn lang" key="agregarCuentaNueva">AGREGAR CUENTA NUEVA</a>
 
         </div>
     </section>
@@ -189,8 +193,8 @@
                             </div>
                             <ul>
 
-                                <li>Phone: +506 2225 6786</li>
-                                <li>Email: service@e-food.com</li>
+                                <li class="lang" key="tel">Telefono: +506 2225 6786</li>
+                                <li class="lang" key="email">Email: service@e-food.com</li>
                             </ul>
                         </div>
                     </div>
@@ -232,6 +236,7 @@
     <script src="~/js/CarritoTotalOtrasClases.js"></script>
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="~/js/SelecionarPago.js"></script>
+    <script src="~/js/scriptIdioma.js"></script>
 </body>
 
 </html>

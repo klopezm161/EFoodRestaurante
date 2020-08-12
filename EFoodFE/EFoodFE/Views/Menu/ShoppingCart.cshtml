@@ -4,10 +4,10 @@
 }
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset=UNICODE HTTP-EQUIV="Content-Language" CONTENT="idioma-variante">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,11 +55,13 @@
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
 
-                <div>Español</div>
+                <div>LANG</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
-                    <li><a href="#">Español</a></li>
-                    <li><a href="#">English</a></li>
+                    <li><a class="translate" id="es">Español</a></li>
+                    <li><a class="translate" id="en">English</a></li>
+                    <li><a class="translate" id="dt">Deutsche</a></li>
+                    <li><a class="translate" id="it">Italiano</a></li>
                 </ul>
             </div>
         </div>
@@ -79,11 +81,13 @@
                         <div class="header__top__right">
 
                             <div class="header__top__right__language">
-                                <div style="color: white;">Español</div>
+                                <div style="color: white;">LANG</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Español</a></li>
-                                    <li><a href="#">English</a></li>
+                                    <li><a class="translate" id="es">Español</a></li>
+                                    <li><a class="translate" id="en">English</a></li>
+                                    <li><a class="translate" id="dt">Deutsche</a></li>
+                                    <li><a class="translate" id="it">Italiano</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -126,7 +130,7 @@
             <form>
                 <div class="form-row align-items-center">
                     <div class="col-auto">
-                        <label for="buscar">Buscar</label>
+                        <label for="buscar" class="lang" key="buscar">Buscar</label>
                     </div>
                     <div class="col-3">
                         <select id="combo" class="form-control"> </select>
@@ -147,7 +151,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h3 style="color: black;"><b>CARRITO DE COMPRAS</b></h3>
+                    <h3 style="color: black;"><b class="lang" key="carritoDeCompras">CARRITO DE COMPRAS</b></h3>
 
                 </div>
             </div>
@@ -158,17 +162,17 @@
     <!-- Shoping Cart Section Begin -->
     <div class="products-container">
         <div class="product-header">
-            <h5 class="product-title">PRODUCT</h5>
-            <h5 class="price sm-hide">PRICE</h5>
-            <h5 class="quantity">QUANTITY</h5>
-            <h5 class="total">TOTAL</h5>
-            <h5 class="total ">Eliminar</h5>
+            <h5 class="product-title lang" key="producto">PRODUCTO</h5>
+            <h5 class="price sm-hide lang" key="precio">PRECIO</h5>
+            <h5 class="quantity lang" key="cantidad">CANTIDAD</h5>
+            <h5 class="total lang" key="total">TOTAL</h5>
+            <h5 class="total lang" key="eliminar">Eliminar</h5>
         </div>
         <div class="products">
 
         </div>
         <div class="basketTotalContainer">
-            <a href='@Url.Action("CheckOut", "Menu") ' style="background-color: black;" class="primary-btn">PAGAR</a>
+            <a href='@Url.Action("CheckOut", "Menu") ' style="background-color: black;" class="primary-btn lang" key="pagar">PAGAR</a>
         </div>
 
 
@@ -185,8 +189,8 @@
                         </div>
                         <ul>
 
-                            <li>Phone: +506 2225 6786</li>
-                            <li>Email: service@e-food.com</li>
+                            <li class="lang" key="tel">Telefono: +506 2225 6786</li>
+                            <li class="lang" key="email">Email: service@e-food.com</li>
                         </ul>
                     </div>
                 </div>
@@ -225,6 +229,7 @@
     <script src="~/js/main.js"></script>
     <script src="~/js/BuscarProducto.js"></script>
     <script src="~/js/carrito.js"></script>
+    <script src="~/js/scriptIdioma.js"></script>
 </body>
 
 </html>
