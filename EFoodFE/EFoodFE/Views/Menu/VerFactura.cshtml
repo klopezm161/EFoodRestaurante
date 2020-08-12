@@ -55,11 +55,13 @@
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
 
-                <div>Español</div>
+                <div>LANG</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
-                    <li><a href="#">Español</a></li>
-                    <li><a href="#">English</a></li>
+                    <li><a class="translate" id="es">Español</a></li>
+                    <li><a class="translate" id="en">English</a></li>
+                    <li><a class="translate" id="dt">Deutsche</a></li>
+                    <li><a class="translate" id="it">Italiano</a></li>
                 </ul>
             </div>
         </div>
@@ -79,11 +81,13 @@
                         <div class="header__top__right">
 
                             <div class="header__top__right__language">
-                                <div style="color: white;">Español</div>
+                                <div style="color: white;">LANG</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Español</a></li>
-                                    <li><a href="#">English</a></li>
+                                    <li><a class="translate" id="es">Español</a></li>
+                                    <li><a class="translate" id="en">English</a></li>
+                                    <li><a class="translate" id="dt">Deutsche</a></li>
+                                    <li><a class="translate" id="it">Italiano</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -109,7 +113,7 @@
                             </li>
                             @*<li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>*@
                         </ul>
-                        <div class="header__cart__price">SubTotal: <span id="totalCarro"></span></div>
+                        <div class="header__cart__price">₡ <span id="totalCarro"></span></div>
                     </div>
                 </div>
             </div>
@@ -127,7 +131,7 @@
             <form>
                 <div class="form-row align-items-center">
                     <div class="col-auto">
-                        <label for="buscar">Buscar</label>
+                        <label for="buscar" class="lang" key="buscar">Buscar</label>
                     </div>
                     <div class="col-3">
                         <select id="combo" class="form-control"> </select>
@@ -150,13 +154,13 @@
                     <div class="breadcrumb__text">
                         <div style="color: black;" class="breadcrumb__option">
                             <br />
-                            <h3 style="color: black;"><b>FACTURA DE TU PEDIDO</b></h3>
+                            <h3 style="color: black;" ><b class="lang" key="facturaDeTuPedido">FACTURA DE TU PEDIDO</b></h3>
                             <br>
 
                             <br />
                             <div class="row">
                                 <div class="col-md-6 text-center">
-                                    <h4>Cod Pedido: </h4>
+                                    <h4 class="lang" key="codPedido">Cod Pedido: </h4>
                                 </div>
                                 <div class="col-md-6 text-center">
                                     <h4 id="cod"></h4>
@@ -164,7 +168,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 text-center">
-                                    <h4>Fecha: </h4>
+                                    <h4 class="lang" key="fecha">Fecha-Hora:</h4>
                                 </div>
                                 <div class="col-md-6 text-center">
                                     <h4 id="fecha"></h4>
@@ -172,24 +176,24 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <h4>Nombre del cliente:</h4>
+                                    <h4 class="lang" key="nombreDelCliente">Nombre del cliente:</h4>
                                 </div>
                                 <div class="col-md-6 ">
                                     <h4 id="nombre_cliente"></h4>
                                 </div>
                             </div>
                             <br>
-                            <h4><b>Productos facturados</b></h4>
+                            <h4><b class="lang" key="productosFacturados">PRODUCTOS FACTURADOS</b></h4>
                             <br><br>
                             <div class="row">
 
                                 <div class="">
-                                    <h2>Resultado de busqueda</h2>
+                                    
                                     <table class="tableBodyScroll">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th>Producto</th>
-                                                <th>Precio</th>
+                                                <th class="lang" key="producto">Producto</th>
+                                                <th class="lang" key="precio">Precio</th>
                                             </tr>
                                         </thead>
                                         <tbody id="contenido">
@@ -201,7 +205,7 @@
                             <br />
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <h4>Total:</h4>
+                                    <h4 class="lang" key="total">Total:</h4>
                                 </div>
                                 <div class="col-md-6 ">
                                     <h4 id="total_factura"></h4>
@@ -212,7 +216,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <a href='@Url.Action("Index", "Home") ' style="background-color: green;" class="primary-btn">Inicio</a>
+                                    <a href='@Url.Action("Index", "Home") ' style="background-color: green;" class="primary-btn lang" key="inicio">Inicio</a>
 
                                 </div>
 
@@ -238,8 +242,8 @@
                             </div>
                             <ul>
 
-                                <li>Phone: +506 2225 6786</li>
-                                <li>Email: service@e-food.com</li>
+                                <li class="lang" key="tel">Telefono: +506 2225 6786</li>
+                                <li class="lang" key="email">Email: service@e-food.com</li>
                             </ul>
                         </div>
                     </div>
@@ -280,6 +284,7 @@
     <script src="~/js/CarritoTotalOtrasClases.js"></script>
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="~/js/VerFactura.js"></script>
+    <script src="~/js/scriptIdioma.js"></script>
 </body>
 
 </html>

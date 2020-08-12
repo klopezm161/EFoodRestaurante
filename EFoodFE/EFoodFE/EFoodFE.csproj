@@ -238,6 +238,7 @@
     <Content Include="js\mixitup.min.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\PrecioProducto.js" />
+    <Content Include="js\scriptIdioma.js" />
     <Content Include="js\SeleccionarTarjetaCheque.js" />
     <Content Include="js\SelecionarPago.js" />
     <Content Include="js\VerFactura.js" />
@@ -272,6 +273,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="lang.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

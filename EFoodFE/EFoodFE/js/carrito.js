@@ -159,7 +159,7 @@ function displayCart() {
         });
         productContainer.innerHTML += `
       <div class="basketTotalContainer"> 
-        <h4 class="basketTotalTile">Basket Total </h4>
+        <h4 class="basketTotalTile">Total </h4>
         <h4 class="basketTotal">¢${cartCost},00 </h4>
       </div>
      `

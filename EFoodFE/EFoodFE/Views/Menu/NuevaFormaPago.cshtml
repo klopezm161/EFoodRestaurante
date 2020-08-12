@@ -55,11 +55,13 @@
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
 
-                <div>Español</div>
+                <div>LANG</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
-                    <li><a href="#">Español</a></li>
-                    <li><a href="#">English</a></li>
+                    <li><a class="translate" id="es">Español</a></li>
+                    <li><a class="translate" id="en">English</a></li>
+                    <li><a class="translate" id="dt">Deutsche</a></li>
+                    <li><a class="translate" id="it">Italiano</a></li>
                 </ul>
             </div>
         </div>
@@ -79,11 +81,13 @@
                         <div class="header__top__right">
 
                             <div class="header__top__right__language">
-                                <div style="color: white;">Español</div>
+                                <div style="color: white;">LANG</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Español</a></li>
-                                    <li><a href="#">English</a></li>
+                                    <li><a class="translate" id="es">Español</a></li>
+                                    <li><a class="translate" id="en">English</a></li>
+                                    <li><a class="translate" id="dt">Deutsche</a></li>
+                                    <li><a class="translate" id="it">Italiano</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -109,7 +113,7 @@
                             </li>
                             @*<li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>*@
                         </ul>
-                        <div class="header__cart__price">SubTotal: <span id="totalCarro"></span></div>
+                        <div class="header__cart__price">₡ <span id="totalCarro"></span></div>
                     </div>
                 </div>
             </div>
@@ -127,7 +131,7 @@
             <form>
                 <div class="form-row align-items-center">
                     <div class="col-auto">
-                        <label for="buscar">Buscar</label>
+                        <label for="buscar" class="lang" key="buscar">Buscar</label>
                     </div>
                     <div class="col-3">
                         <select id="combo" class="form-control"> </select>
@@ -145,15 +149,15 @@
     <br />
     <section>
         <div class="container">
-            <h3 style="color: black;"><b>INGRESE LOS DATOS DE LA NUEVA FORMA DE PAGO</b></h3>
+            <h3 style="color: black;"><b class="lang" key="ingreseDatos">INGRESE LOS DATOS DE LA NUEVA FORMA DE PAGO</b></h3>
             <br />
             <div class="row">
                 <div class="col-lg-6 ">
                     <form class="credit-card-div ">
-                        <h3>¿Quiere agregar una Tarjeta de Crédito?</h3>
+                        <h3 class="lang" key="agregarTarjeta">¿Quiere agregar una Tarjeta de Crédito?</h3>
                         <br>
                         <div class="form-group col-lg-12">
-                            <label for="exampleInputEmail1">Tarjetas disponibles</label>
+                            <label for="exampleInputEmail1" class="lang" key="tarjetasDisponibles">Tarjetas disponibles</label>
                             <ul>
 
                                 <select class="md-form" id="tarjetasAsignadas">
@@ -164,52 +168,52 @@
                         <br>
                         <br>
                         <div class="form-group col-lg-12">
-                            <label for="exampleInputEmail1">Número de tarjeta</label>
+                            <label for="exampleInputEmail1" class="lang" key="numeroTarjeta">Número de tarjeta</label>
                             <input type="number" class="form-control" id="numeroTarjeta">
                         </div>
                         <div class="row">
                             <div class="form-group col-lg-3 ">
-                                <label for="exampleInputPassword1">Mes</label>
+                                <label for="exampleInputPassword1" class="lang" key="mes">Mes</label>
                                 <input type="number" class="form-control" min="1" max="12" id="mes" placeholder="MM">
                             </div>
                             <div class="form-group col-lg-3">
-                                <label for="exampleInputPassword1">Año</label>
+                                <label for="exampleInputPassword1" class="lang" key="anio">Año</label>
                                 <input type="number" class="form-control" id="anio" min="2010" placeholder="AAAA">
                             </div>
                             <div class="form-group col-lg-3">
-                                <label for="exampleInputPassword1">CVV</label>
+                                <label for="exampleInputPassword1" class="lang" key="cvv">CVV</label>
                                 <input type="password" class="form-control" id="cvv" placeholder="CVV">
                             </div>
                         </div>
                         <div class="form-group col-lg-12">
-                            <label for="exampleInputEmail1">Tipo de tarjeta</label>                          
+                            <label for="exampleInputEmail1" class="lang" key="tipoTarjeta">Tipo de tarjeta</label>
 
                             <select class="md-form" id="creditoDebito">
-                                <option value="debito">Debito</option>
-                                <option value="credito">Credito</option>
+                                <option value="debito" class="lang" key="debito">Debito</option>
+                                <option value="credito" class="lang" key="credito">Credito</option>
                             </select>
 
-                            
+
                         </div>
 
-                        <button id="agregarTarjeta" type="submit" onclick="location.href='./confirmation.html'" style="background-color: green; border-color: green;" class="col-lg-12 btn btn-primary">AGREGAR TARJETA</button>
+                        <button id="agregarTarjeta" type="submit" onclick="location.href='./confirmation.html'" style="background-color: green; border-color: green;" class="col-lg-12 btn btn-primary lang" key="agregarTarjetabtn">AGREGAR TARJETA</button>
                     </form>
 
                 </div>
                 <div class="col-lg-6 ">
                     <form class="credit-card-div ">
-                        <h3>¿Quiere agregar un cheque electrónico?</h3>
+                        <h3 class="lang" key="chequeAgregar">¿Quiere agregar un cheque electrónico?</h3>
                         <div class="form-group col-lg-12">
                             <br>
-                            <label for="exampleInputEmail1">Número de cheque</label>
+                            <label for="exampleInputEmail1" class="lang" key="numCheque">Número de cheque</label>
                             <input type="text" class="form-control" id="numCheque">
                         </div>
                         <div class="form-group col-lg-12">
-                            <label for="exampleInputPassword1">Cuenta</label>
+                            <label for="exampleInputPassword1" class="lang" key="cuenta">Cuenta</label>
                             <input type="text" class="form-control" id="numCuenta" placeholder="">
                         </div>
                         <br>
-                        <button id="cheque" type="submit" style="background-color: green; border-color: green;" class="col-lg-12 btn btn-primary">AGREAR CHEQUE ELECTRONICO</button>
+                        <button id="cheque" type="submit" style="background-color: green; border-color: green;" class="col-lg-12 btn btn-primary lang" key="agregarCheque">AGREGAR CHEQUE ELECTRONICO</button>
                     </form>
 
                 </div>
@@ -222,7 +226,7 @@
 
 
 
-            <a href='@Url.Action("Payment", "Menu") ' style="background-color: black;" class="primary-btn">SELECCIONE MEDIO DE PAGO</a>
+            <a href='@Url.Action("Payment", "Menu") ' style="background-color: black;" class="primary-btn lang" key="elegirFormaDePago">ELEGIR FORMA DE PAGO</a>
 
         </div>
     </section>
@@ -240,8 +244,8 @@
                             </div>
                             <ul>
 
-                                <li>Phone: +506 2225 6786</li>
-                                <li>Email: service@e-food.com</li>
+                                <li class="lang" key="tel">Telefono:+506 2225 6786</li>
+                                <li class="lang" key="email">Email: service@e-food.com</li>
                             </ul>
                         </div>
                     </div>
@@ -282,6 +286,7 @@
     <script src="~/js/CarritoTotalOtrasClases.js"></script>
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="~/js/AgregarFormaPago.js"></script>
+    <script src="~/js/scriptIdioma.js"></script>
 
 </body>
 
