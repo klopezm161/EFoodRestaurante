@@ -3,16 +3,20 @@
     'use strict';
     let itemsParaFactura = [];
     let final;
-    function obtenerInformacionDeConfirmacion()
-    {
+    const uriCheque = "https://localhost:44335/api/ActualizarCheque/1";
+    const uriTarjeta = "https://localhost:44335/api/ActualizarTarjeta/1";
+    let chequeValido = 0;
+    let tarjetaValido = 0;
+    function obtenerInformacionDeConfirmacion() {
         let userInfo = localStorage.getItem('usuario');
         userInfo = JSON.parse(userInfo);
-        let tipoPago = localStorage.getItem('eleccionTipoPago');     
-        let infoPagoCheque = localStorage.getItem('infoCheque');  
+        let tipoPago = localStorage.getItem('eleccionTipoPago');
+        let infoPagoCheque = localStorage.getItem('infoCheque');
+        let infoPagoTarjeta = localStorage.getItem('infoTarjeta');
         let totalSiHayDescuento = localStorage.getItem('totalCostConDescuento');
         let totalSiNoHayDescuento = localStorage.getItem('totalCost');
         let nombre = document.getElementById("nombreCliente");
-        nombre.textContent = userInfo[0].name + ' ' + userInfo[0].lastName ;
+        nombre.textContent = userInfo[0].name + ' ' + userInfo[0].lastName;
         let direccion = document.getElementById("direccion");
         direccion.textContent = userInfo[0].phone;
         let telefono = document.getElementById("telefono");
@@ -24,15 +28,14 @@
         let nuCheque = document.getElementById("numCheque");
         let cCheque = document.getElementById("numCuentaCheque");
         let totalFinal = document.getElementById("totalFactura");
-        if (tipoPago == 'Efectivo' || tipoPago == 'efectivo' ) {
-            
+        if (tipoPago == 'Efectivo' || tipoPago == 'efectivo') {
+
             tipoTarjeta.textContent = "NA";
             numTarjeta.textContent = "NA";
             nuCheque.textContent = "NA";
             cCheque.textContent = "NA";
 
-        } else if (tipoPago == 'Cheque')
-        {
+        } else if (tipoPago == 'Cheque') {
             console.log("dentro de pago cheque");
 
             if (infoPagoCheque == null) {
@@ -40,8 +43,7 @@
                 numTarjeta.textContent = "NA";
                 nuCheque.textContent = "Cheque invalido";
                 cCheque.textContent = "Cheque invalido";
-            } else
-            {
+            } else {
                 infoPagoCheque = JSON.parse(infoPagoCheque);
                 tipoTarjeta.textContent = "NA";
                 numTarjeta.textContent = "NA";
@@ -52,35 +54,42 @@
                 var numCuentaChe = infoPagoCheque[0].cuenta;
                 var lastFive = numCuentaChe.substr(numCuentaChe.length - 5);
                 console.log();
-                cCheque.textContent = "******" + lastFive ;
+                cCheque.textContent = "******" + lastFive;
             }
-            
+
         } else if (tipoPago == 'Tarjeta de Credito o Debito') {
-            tipoTarjeta.textContent = "Tipo tarjeta";
-            numTarjeta.textContent = "Num cuenta tarjeta";
-            nuCheque.textContent = "NA";
-            cCheque.textContent = "NA";
+            if (infoPagoTarjeta == null) {
+                tipoTarjeta.textContent = "Tarjeta invalida";
+                numTarjeta.textContent = "Número tarjeta invalido";
+                nuCheque.textContent = "NA";
+                cCheque.textContent = "NA";
+            } else {
+
+                infoPagoTarjeta = JSON.parse(infoPagoTarjeta);
+                tipoTarjeta.textContent = infoPagoTarjeta[0].tipoTarjeta;
+
+                var numCuentaTarj = infoPagoTarjeta[0].numTarjeta;
+                var lastFive = numCuentaTarj.substr(numCuentaTarj.length - 5);
+                numTarjeta.textContent = "******" + lastFive;
+                nuCheque.textContent = "NA";
+                cCheque.textContent = "NA";
+            }
         } if (totalSiHayDescuento != null) {
             totalFinal.textContent = totalSiHayDescuento;
-        } else
-        {
+        } else {
             totalFinal.textContent = totalSiNoHayDescuento;
         }
 
         final = totalFinal;
-       
+
     }
 
-  
-
-    function previoAFacturar()
-    {
+    function previoAFacturar() {
         let itemsInCart = localStorage.getItem('productsInCart');
         itemsInCart = JSON.parse(itemsInCart);
         console.log(itemsInCart);
         console.log(itemsInCart.length);
-        for (let valor of itemsInCart)
-        {
+        for (let valor of itemsInCart) {
 
             itemsParaFactura.push(valor);
         }
@@ -91,7 +100,7 @@
     }
 
     function agregarProd() {
-//Agregar productos del carrito a la factura
+        //Agregar productos del carrito a la factura
         for (let x in itemsParaFactura) {
             let name = itemsParaFactura[x].name;
             let price = itemsParaFactura[x].price
@@ -100,7 +109,6 @@
             const item = {
                 codigo_producto: name,
                 precio: price
-
             };
 
             fetch(uri2, {
@@ -112,7 +120,7 @@
                 body: JSON.stringify(item)
             }).then(response => response.text())
                 .then(text => {
-                    alert(text)
+                    //   alert(text)
                     console.log(text);
                 })
                 .catch(err => console.log('error', err));
@@ -121,66 +129,290 @@
 
     }
 
-function agregarItems() {
-        //facturar
+    function validarPagoCheque(monto) {
+        let infoCheque = localStorage.getItem('infoCheque');
+        infoCheque = JSON.parse(infoCheque);
+        console.log('Dentro de validarPagoCheque');
+        let chequeV;
+        let cuentaV;
+        console.log(infoCheque);
+        for (let value of infoCheque) {
+            chequeV = value.cheque;
+            cuentaV = value.cuenta;
+        }
+        var verificar = true;
 
-    let estado1 = "En Proceso";
-    let monto = parseFloat(final.textContent);
+        let cartCost = monto;
+        console.log("Imprimiendo variables previos a enviar a cheque");
+        console.log(chequeV);
+        console.log(cuentaV);
+        console.log(cartCost);
+        if (verificar) {
+            const item = {
+                cheque: chequeV,
+                cuenta: cuentaV,
+                monto: cartCost
 
-        const uri1 = "https://localhost:44308/api/Detalle";
-        const item = {
-            monto: monto,
-            estado: estado1
+            };
 
-        };
+            fetch(uriCheque, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(item)
+            }).then(response => response.text())
+                .then(text => {
+                    //alert(text);
+                    if (text == '"Cheque aceptado"') {
+                        console.log("si aceptó el cheque");
 
-        fetch(uri1, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(item)
-        }).then(response => response.text())
-            .then(text => {
-                alert(text)
-                console.log(text);
-            })
-        .catch(err => console.log('error', err));
-
-
-
-    console.log("Inicia agregarProd");
-    setTimeout(function () {
-        console.log("Iniciado");
-        agregarProd();
-    }, 4000);
-
-
-
-    localStorage.clear('productsInCart');
-    localStorage.clear('totalCost');
-    localStorage.clear('cartNumbers');
-    localStorage.clear('eleccionTipoPago');
-    localStorage.clear('totalCostConDescuento');
-
-    var contenido = document.querySelector('#contenido');
-    var botones = document.getElementById('botones');
-    var pregunta = document.querySelector('#pregunta');
-    while (botones.firstChild) {
-        botones.removeChild(botones.firstChild)
+                    } else {
+                        localStorage.setItem('pagoValidado', 1);
+                    }
+                })
+                .catch(err => console.log('error', err));
+            //  $('#formulario').trigger("reset");
+        }
     }
-    pregunta.innerHTML = "¿Quieres ver tu factura?";
-    contenido.innerHTML = `<a style="background-color: red;" class="primary-btn" href='/Menu/VerFactura'>Ver Factura</a>` 
 
+    function validarPagoTarjeta(monto) {
+        let infoTarjeta = localStorage.getItem('infoTarjeta');
+        let pagoValido = localStorage.getItem('pagoValidado');
+        infoTarjeta = JSON.parse(infoTarjeta);
+        console.log('Dentro de validarPagoCheque');
+        console.log(infoTarjeta);
+        let numTarjetaV;
+        let mesV;
+        let anioV;
+        let cvvV;
+        let tipoV;
+        let creditoDebitoV;
+        for (let value of infoTarjeta) {
+            numTarjetaV = value.numTarjeta;
+            mesV = value.mes;
+            anioV = value.anio;
+            cvvV = value.cvv;
+            tipoV = value.tipoTarjeta;
+            creditoDebitoV = value.creditoDebito;
+        }
+        var verificar = true;
+
+        let cartCost = monto;
+        console.log("Imprimiendo variables previos a enviar a cheque");
+        console.log(numTarjetaV);
+        console.log(mesV);
+        console.log(anioV);
+        console.log(cvvV);
+        console.log(tipoV);
+        console.log(creditoDebitoV);
+        console.log(cartCost);
+
+        if (verificar) {
+            const item = {
+                numTarjeta: numTarjetaV,
+                mes: mesV,
+                anio: anioV,
+                cvv: cvvV,
+                tipoTarjeta: tipoV,
+                creditoDebito: creditoDebitoV,
+                monto: cartCost
+            };
+
+            fetch(uriTarjeta, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(item)
+            }).then(response => response.text())
+                .then(text => {
+                    console.log(text);
+                    if (text == '"Tarjeta aceptada"') {
+                        console.log("si aceptó el tarjeta");
+                    } else {
+                        localStorage.setItem('pagoValidado', 1);
+                    }
+                })
+                .catch(err => console.log('error', err));
+            //  $('#formulario').trigger("reset");
+        }
+    }
+    const uriDescuento = "https://localhost:44308/api/TiqueteDescuento//1";
+    function actualizarDescuento(array) {
+        let infoDescuento = localStorage.getItem('arrTodoDescuento');
+        infoDescuento = JSON.parse(infoDescuento);
+        console.log("printing array desde actualizar descuento ");
+        console.log(infoDescuento);
+       
+        console.log(infoDescuento[0].codigo);
+      //  console.log(array);
+        var verificar = true;
+        let codigo = infoDescuento[0].codigo ;
+        let descripcion = infoDescuento[0].descripcion;
+        let disponibleV = infoDescuento[0].disponible - 1;
+        let descuentoV = infoDescuento[0].descuento;
+        console.log(codigo);
+        console.log(descripcion);
+        console.log(disponibleV);
+        console.log(descuentoV);      
+        let user = 'karla';
+        if (verificar) {
+            const item = {
+                codigo: codigo,
+                descripcion: descripcion,
+                disponible: disponibleV,
+                descuento: descuentoV,
+                usuario: user
+            };
+
+            fetch(uriDescuento, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(item)
+            }).then(response => response.text())
+                .then(text => console.log(text))
+                .catch(err => console.log('error', err));
+        }
+    }
+
+    function agregarItems() {
+        let estado1 = "En Proceso";
+        let monto = parseFloat(final.textContent);
+        //previo a facturar actualizamos cuentas del cliente
+        let formaPagoValido = true;
+        let tipoPago = localStorage.getItem('eleccionTipoPago');
+        let infoTarjeta = localStorage.getItem('infoTarjeta');
+        let infoDescuento = localStorage.getItem('arrTodoDescuento');
+        infoTarjeta = JSON.parse(infoTarjeta);     
+        if (tipoPago == 'Cheque') {
+            validarPagoCheque(monto);
+            console.log(chequeValido);
+            setTimeout(function () {
+                console.log("Iniciado");
+                let chequeValido = localStorage.getItem('pagoValidado');
+                console.log(chequeValido)
+                if (chequeValido == 1) {
+                    formaPagoValido = false;
+                    console.log("imprimiendo cheque no valido");
+                    alert("Cheque no válido, verifique la forma de pago");
+                    localStorage.removeItem('pagoValidado');
+                }
+            }, 1500);
+           
+        } else if (tipoPago == 'Tarjeta de Credito o Debito' && infoTarjeta[0].creditoDebito == 'debito') {
+            console.log("dentro de debito");
+            validarPagoTarjeta(monto);
+            setTimeout(function () {
+                console.log("Iniciado");
+                let tarjetaValido = localStorage.getItem('pagoValidado');
+                console.log(tarjetaValido)
+                if (tarjetaValido == 1) {
+                    formaPagoValido = false;
+                    console.log("imprimiendo tarjeta no valida");
+                    alert("Tarjeta no válida, verifique la forma de pago");
+                    localStorage.removeItem('pagoValidado');
+                }
+            }, 1500);
+        }
+        if (infoDescuento != null) {              
+            actualizarDescuento();
+
+        }
+        if (formaPagoValido) {
+
+            //facturar
+
+                const uri1 = "https://localhost:44308/api/Detalle";
+                const item = {
+                    monto: monto,
+                    estado: estado1
+
+                };
+
+                fetch(uri1, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(item)
+                }).then(response => response.text())
+                    .then(text => {
+                        alert(text)
+                        console.log(text);
+                    })
+                .catch(err => console.log('error', err));
+
+
+
+            console.log("Inicia agregarProd");
+            setTimeout(function () {
+                console.log("Iniciado");
+                agregarProd();
+            }, 2000);
+
+            setTimeout(function () {
+                console.log("Iniciado");
+                agregarProd();
+            }, 2000);
+
+            localStorage.removeItem('productsInCart');
+            localStorage.removeItem('totalCost');
+            localStorage.removeItem('cartNumbers');
+            localStorage.removeItem('eleccionTipoPago');
+            localStorage.removeItem('totalCostConDescuento');
+
+            var contenido = document.querySelector('#contenido');
+            var botones = document.getElementById('botones');
+            var pregunta = document.querySelector('#pregunta');
+            while (botones.firstChild) {
+                botones.removeChild(botones.firstChild)
+            }
+            pregunta.innerHTML = "¿Quieres ver tu factura?";
+            contenido.innerHTML = `<a style="background-color: red;" class="primary-btn" href='/Menu/VerFactura'>Ver Factura</a>` 
+        }
+        localStorage.removeItem('porcentajeDesc');
+        localStorage.removeItem('descuentoElegido');
+        localStorage.removeItem('precioViejo');
+        localStorage.removeItem('usuario');
+        localStorage.removeItem('totalWasUpdated');
+        localStorage.removeItem('arrTodoDescuento');
+        localStorage.removeItem('infoTarjeta');
+        localStorage.removeItem('infoCheque');
     };
 
+    function cancelar() {
+       
+        setTimeout(function () {
+            localStorage.removeItem('productsInCart');
+            localStorage.removeItem('totalCost');
+            localStorage.removeItem('cartNumbers');
+            localStorage.removeItem('eleccionTipoPago');
+            localStorage.removeItem('totalCostConDescuento');
+            localStorage.removeItem('porcentajeDesc');
+            localStorage.removeItem('descuentoElegido');
+            localStorage.removeItem('precioViejo');
+            localStorage.removeItem('usuario');
+            localStorage.removeItem('totalWasUpdated');
+            localStorage.removeItem('arrTodoDescuento');
+            localStorage.removeItem('infoTarjeta');
+            localStorage.removeItem('infoCheque');
+        }, 1000);
+      //  @Url.Action("Index", "Home")
+
+    }
     var init = () => {
-       obtenerInformacionDeConfirmacion();
+        obtenerInformacionDeConfirmacion();
         previoAFacturar();
 
-        document.getElementById("facturar").addEventListener("click", agregarItems );
-        
+        document.getElementById("facturar").addEventListener("click", agregarItems);
+       // document.getElementById("cancelar").addEventListener("click", cancelar);
     }
 
     init();
