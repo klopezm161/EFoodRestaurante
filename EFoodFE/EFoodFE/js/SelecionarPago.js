@@ -3,6 +3,7 @@
     'use strict';
     let ArrMedios = [];
     let ArrTiquetDescuento = [];
+    let ArrTodoDescuento = [];
 
     function totalCost(arregloTiquetes) {
         console.log(arregloTiquetes);
@@ -29,6 +30,11 @@
                         localStorage.setItem('totalCostConDescuento', newTotal);
                         localStorage.setItem('totalWasUpdated', descuentoPrecio);
                         localStorage.setItem('porcentajeDesc', valor.descuento);
+                        console.log("Imprimiendo todo el array de descuento");
+                        console.log(valor);
+                        ArrTodoDescuento.push(valor);
+                        localStorage.setItem('arrTodoDescuento', JSON.stringify(ArrTodoDescuento));
+
                     }
                 }
 
