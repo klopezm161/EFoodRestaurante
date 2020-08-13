@@ -357,11 +357,6 @@
                 agregarProd();
             }, 2000);
 
-            setTimeout(function () {
-                console.log("Iniciado");
-                agregarProd();
-            }, 2000);
-
             localStorage.removeItem('productsInCart');
             localStorage.removeItem('totalCost');
             localStorage.removeItem('cartNumbers');
@@ -385,26 +380,31 @@
         localStorage.removeItem('arrTodoDescuento');
         localStorage.removeItem('infoTarjeta');
         localStorage.removeItem('infoCheque');
+        localStorage.removeItem('arrTarjeta');
     };
 
     function cancelar() {
-       
-        setTimeout(function () {
-            localStorage.removeItem('productsInCart');
-            localStorage.removeItem('totalCost');
-            localStorage.removeItem('cartNumbers');
-            localStorage.removeItem('eleccionTipoPago');
-            localStorage.removeItem('totalCostConDescuento');
-            localStorage.removeItem('porcentajeDesc');
-            localStorage.removeItem('descuentoElegido');
-            localStorage.removeItem('precioViejo');
-            localStorage.removeItem('usuario');
-            localStorage.removeItem('totalWasUpdated');
-            localStorage.removeItem('arrTodoDescuento');
-            localStorage.removeItem('infoTarjeta');
-            localStorage.removeItem('infoCheque');
-        }, 1000);
-      //  @Url.Action("Index", "Home")
+        event.preventDefault();
+        localStorage.removeItem('productsInCart');
+        localStorage.removeItem('totalCost');
+        localStorage.removeItem('cartNumbers');
+        localStorage.removeItem('eleccionTipoPago');
+        localStorage.removeItem('totalCostConDescuento');
+        localStorage.removeItem('porcentajeDesc');
+        localStorage.removeItem('descuentoElegido');
+        localStorage.removeItem('precioViejo');
+        localStorage.removeItem('usuario');
+        localStorage.removeItem('totalWasUpdated');
+        localStorage.removeItem('arrTodoDescuento');
+        localStorage.removeItem('infoTarjeta');
+        localStorage.removeItem('infoCheque');
+        localStorage.removeItem('arrTarjeta');
+
+        var url = $("#RedirectToCreditCard").val();
+         location.href = url;
+           
+     
+      
 
     }
     var init = () => {
@@ -412,7 +412,9 @@
         previoAFacturar();
 
         document.getElementById("facturar").addEventListener("click", agregarItems);
-       // document.getElementById("cancelar").addEventListener("click", cancelar);
+        var btnPut = document.getElementById('cancelar');
+        btnPut.onclick = cancelar;
+
     }
 
     init();

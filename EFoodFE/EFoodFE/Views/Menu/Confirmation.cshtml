@@ -240,7 +240,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <a href='@Url.Action("Index", "Home")' style="background-color: red;" class="primary-btn  lang" key="cancelar">CANCELAR PEDIDO</a>
+                                    <a href='' id="cancelar" style="background-color: red;" class="primary-btn  lang" key="cancelar">CANCELAR PEDIDO</a>
                                 </div>
                             </div>
                         </div>
@@ -305,6 +305,8 @@
     </section>
 
     @Html.Hidden("RedirectTo", Url.Action("ResultadoBusqueda", "Menu"))
+    @Html.Hidden("RedirectToCreditCard", Url.Action("Index", "Home"))
+
 
     <!-- Footer Section End -->
     <!-- Js Plugins -->
