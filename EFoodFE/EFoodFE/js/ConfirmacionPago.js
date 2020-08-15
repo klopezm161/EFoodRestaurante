@@ -100,31 +100,38 @@
     }
 
     function agregarProd() {
+        let cantidad;
         //Agregar productos del carrito a la factura
         for (let x in itemsParaFactura) {
             let name = itemsParaFactura[x].name;
             let price = itemsParaFactura[x].price
+            console.log(itemsParaFactura[x].inCart);
+            cantidad = itemsParaFactura[x].inCart;
+            let cont = 1;
+            while (cont <= cantidad) {
 
-            const uri2 = "https://localhost:44308/api/DetalleProd";
-            const item = {
-                codigo_producto: name,
-                precio: price
-            };
+                const uri2 = "https://localhost:44308/api/DetalleProd";
+                const item = {
+                    codigo_producto: name,
+                    precio: price
+                };
 
-            fetch(uri2, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(item)
-            }).then(response => response.text())
-                .then(text => {
-                    //   alert(text)
-                    console.log(text);
-                })
-                .catch(err => console.log('error', err));
+                fetch(uri2, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(item)
+                }).then(response => response.text())
+                    .then(text => {
+                        //   alert(text)
+                        console.log(text);
+                    })
+                    .catch(err => console.log('error', err));
 
+                cont = cont + 1;
+            }
         }
 
     }
