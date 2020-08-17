@@ -388,6 +388,7 @@
         localStorage.removeItem('infoTarjeta');
         localStorage.removeItem('infoCheque');
         localStorage.removeItem('arrTarjeta');
+        localStorage.removeItem('twitterInfo');
     };
 
     function cancelar() {
@@ -406,6 +407,7 @@
         localStorage.removeItem('infoTarjeta');
         localStorage.removeItem('infoCheque');
         localStorage.removeItem('arrTarjeta');
+        localStorage.removeItem('twitterInfo');
 
         var url = $("#RedirectToCreditCard").val();
          location.href = url;
