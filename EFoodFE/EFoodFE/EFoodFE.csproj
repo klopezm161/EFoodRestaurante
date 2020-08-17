@@ -241,6 +241,7 @@
     <Content Include="js\scriptIdioma.js" />
     <Content Include="js\SeleccionarTarjetaCheque.js" />
     <Content Include="js\SelecionarPago.js" />
+    <Content Include="js\twitter2.js" />
     <Content Include="js\twitterAuth.js" />
     <Content Include="js\VerFactura.js" />
     <Content Include="js\VerProducto.js" />
